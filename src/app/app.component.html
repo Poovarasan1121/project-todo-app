@@ -1,0 +1,47 @@
+<div class="container-fluid"> 
+  <div class="split left c1">
+    <div class="centered">
+      <form [formGroup]="todolist">
+        <h2><i>TO - DO</i></h2>
+        <input
+          type="text"
+          formControlName="todoname"
+          class="i1" value="todolist"
+          placeholder="Todo name"
+          id="todoname"
+        />
+        <br />
+        <button (click)="onFormSubmit(todolist)" [hidden]="hiddenAddBtn" class="b1">
+          ADD
+        </button>
+      </form>
+  </div>
+  <div class="split right c2">
+      <div class="centered">
+        <h2><i>TO-DO List</i></h2>
+        <div class="container ">
+          <ul class="tt1" *ngFor="let x of todoset" >
+            <li class="t1 r1" cdkDrag> 
+              {{ x.todo }}<br />
+              <button (click)="onEditTodo(x)" class="b2">
+                Edit
+              </button>
+              &#160;
+              <button (click)="onDeleteTodo(x)" class="b3">Delete</button>
+              &#160;
+              <div [hidden]="selectedTodo.id !== x.id">
+                <br />
+                <button (click)="savedata()" class="b4" [hidden]="selectedTodo.id !== x.id">Save</button> &#160;
+                <button (click)="canceldata()" class="b5" [hidden]="selectedTodo.id !== x.id">Cancel</button>
+                &#160;
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+
